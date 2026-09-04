@@ -1,0 +1,63 @@
+/* ==========================================================================
+   ANIMATIONS & KEYFRAMES
+   ========================================================================== */
+
+/* Red Industrial Light Blink */
+@keyframes blinkRed {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px #ef4444), drop-shadow(0 0 20px #ef4444);
+  }
+  50% {
+    opacity: 0.25;
+    filter: drop-shadow(0 0 2px #ef4444);
+  }
+}
+
+/* Interaction Hand Tap Bounce */
+@keyframes bounceHand {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Pulsing Glow Effect */
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12)), drop-shadow(0 0 16px rgba(255, 64, 136, 0.25));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.16)), drop-shadow(0 0 24px rgba(255, 64, 136, 0.4));
+    transform: scale(1.02);
+  }
+}
+
+/* Warm Baby Crib Glow */
+@keyframes pulseBed {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+/* Floating Elements */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+.float-anim {
+  animation: floatSlow 3.5s ease-in-out infinite;
+}

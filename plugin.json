@@ -1,0 +1,5 @@
+{
+  "name": "monsters-invitation-plugin",
+  "version": "1.0.0",
+  "description": "Plugin para desarrollo de invitaciones interactivas animadas con GSAP y metodologías SDD para Monsters Inc"
+}

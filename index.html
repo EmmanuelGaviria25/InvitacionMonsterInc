@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>¡Cumple 1 Añito Ana Lucía! 🎉 - Invitación Monsters Inc</title>
+
+  <!-- SEO & Social Meta -->
+  <meta name="description"
+    content="Invitación interactiva al cumpleaños de 1 año de Ana Lucía. ¡Acompáñanos a festejar en Monstropolis!">
+  <meta property="og:title" content="¡Cumple 1 Añito Ana Lucía! - Monsters Inc">
+  <meta property="og:description" content="Toca la puerta mágica y descubre la sorpresa de cumpleaños.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- App Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/scenes.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- External Libraries: GSAP 3 & Canvas-Confetti -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+
+  <main class="app-wrapper">
+
+    <!-- Splash Screen: Solución definitiva para desbloqueo de sonido y experiencia mágica -->
+    <div id="splash-screen" class="splash-screen">
+      <canvas id="splash-confetti-canvas" class="splash-confetti-canvas"></canvas>
+      <div class="splash-logo-wrap">
+        <div class="splash-badge-img-wrap">
+          <img src="assets/bienvenida_cumple_analu.jpg" alt="Ana Lucía 1er Añito" class="splash-badge-img">
+        </div>
+        <h1 class="splash-title">¡Cumple de Ana Lucía!</h1>
+        <p class="splash-subtitle">Has recibido un acceso especial a la puerta mágica de Monstropolis</p>
+      </div>
+      <button id="btn-start-invitation" class="btn-splash-start">
+        <span>Tocar para Abrir</span>
+        <span class="btn-sparkle">✨</span>
+      </button>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="top-badge">
+        <span>👁️</span> MONSTROPOLIS INC.
+      </div>
+      <button id="btn-sound-toggle" class="btn-icon-control" aria-label="Control de Sonido">
+        🔊
+      </button>
+    </header>
+
+    <!-- Seamless Double-Buffered Video Viewport -->
+    <div id="stage-viewport" class="stage-viewport">
+
+      <!-- Video Layer A -->
+      <video id="video-layer-a" class="video-layer active" playsinline preload="auto"></video>
+
+      <!-- Video Layer B -->
+      <video id="video-layer-b" class="video-layer" playsinline preload="auto"></video>
+
+      <!-- Transparent Touch Trigger Overlay for Taps -->
+      <div id="touch-trigger" class="touch-trigger-overlay"></div>
+
+      <!-- Call to Action Indicator -->
+      <div id="interaction-cue" class="interaction-cue pulse-glow">
+        <div class="cue-bubble">
+          <span class="cue-icon">👆</span>
+          <span class="cue-text">Toca la puerta para entrar</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Background Music Audio Element for 100% Reliable Playback -->
+    <audio id="birthday-audio-player" preload="auto" loop src="assets/un-alegre-vals-de-ukelele.mp3"></audio>
+
+    <!-- ==========================================
+         Official Invitation Overlay Card (Glassmorphism)
+         ========================================== -->
+    <section id="scene-invitation" class="invitation-overlay hidden">
+      <article class="invitation-card">
+
+        <!-- Header Badge -->
+        <div class="card-decor-header">
+          <div class="monster-m-badge">M</div>
+          <span class="screamer-badge">¡Invitación Oficial!</span>
+        </div>
+
+        <!-- Title and Child Info -->
+        <div class="invitation-title-wrap">
+          <h1 id="inv-child-name" class="invitation-child-name">Ana Lucía</h1>
+          <div id="inv-age-tag" class="invitation-age-tag">¡Cumple 1 Añito!</div>
+          <p id="inv-tagline" class="invitation-tagline">¡Nuestra pequeña monstruito cumple su primer año!</p>
+        </div>
+
+        <!-- Party Details Box -->
+        <div class="party-info-box">
+          <div class="info-row">
+            <div class="info-icon-badge">📅</div>
+            <div class="info-text-group">
+              <span class="info-label">Fecha</span>
+              <span id="inv-date" class="info-value">Sábado 15 de Noviembre</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon-badge">⏰</div>
+            <div class="info-text-group">
+              <span class="info-label">Hora</span>
+              <span id="inv-time" class="info-value">4:00 PM</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon-badge">📍</div>
+            <div class="info-text-group">
+              <span class="info-label">Lugar</span>
+              <span id="inv-location" class="info-value">Salón Mágico Monstropolis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="card-actions">
+          <a id="btn-whatsapp" class="btn-action btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <span>💬</span> Confirmar por WhatsApp
+          </a>
+          <a id="btn-maps" class="btn-action btn-maps" target="_blank" rel="noopener noreferrer">
+            <span>📍</span> Ver Ubicación en Maps
+          </a>
+          <a id="btn-calendar" class="btn-action btn-calendar" target="_blank" rel="noopener noreferrer">
+            <span>🗓️</span> Agendar en Calendario
+          </a>
+          <button id="btn-replay" class="btn-action btn-replay">
+            🔄 Volver a ver la sorpresa
+          </button>
+        </div>
+
+      </article>
+    </section>
+
+  </main>
+
+  <!-- ES Modules Application Script -->
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
