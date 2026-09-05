@@ -10,6 +10,7 @@ export const STATES = {
   OPEN_DOOR: 'STATE_OPEN_DOOR',              // Clip: Abriendo la puerta de la habitación
   ROOM_SLEEPING: 'STATE_ROOM_SLEEPING',      // Clip: Ana Lucía durmiendo plácidamente
   PARTY_CELEBRATION: 'STATE_PARTY_CELEBRATION', // Clip: Despertar, risas y celebración de cumpleaños
+  CAKE_CANDLE: 'STATE_CAKE_CANDLE',          // Clip: Pastel de 1 año, soplar la vela y confeti
   INVITATION_CARD: 'STATE_INVITATION_CARD'   // Tarjeta final Glassmorphism con RSVP
 };
 

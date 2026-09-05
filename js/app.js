@@ -39,9 +39,10 @@ class VideoApp {
     // Interaction Lock Flag
     this.canInteract = false;
 
-    // Splash Screen Element
+    // Splash Screen Element & Magic Flash Light Element
     this.splashEl = document.getElementById('splash-screen');
     this.startBtn = document.getElementById('btn-start-invitation');
+    this.magicLightEl = document.getElementById('magic-light-flash');
   }
 
   init() {
@@ -51,6 +52,28 @@ class VideoApp {
 
     // Iniciar lluvia de confeti continua en la pantalla de bienvenida
     animationController.startSplashFallingConfetti();
+  }
+
+  triggerMagicLightFlash(onPeakCallback = null) {
+    if (!this.magicLightEl) {
+      if (onPeakCallback) onPeakCallback();
+      return;
+    }
+
+    // Paso 1: Encender la luz dorada/amarilla rápidamente llenando la pantalla
+    this.magicLightEl.classList.remove('fade-slow');
+    this.magicLightEl.classList.add('active');
+
+    // Al llegar al pico de brillo máximo (450ms), hacer la transición de video
+    setTimeout(() => {
+      if (onPeakCallback) onPeakCallback();
+
+      // Paso 2: Apagar la luz despacio suavemente al entrar a la habitación
+      setTimeout(() => {
+        this.magicLightEl.classList.add('fade-slow');
+        this.magicLightEl.classList.remove('active');
+      }, 200);
+    }, 450);
   }
 
   startInvitationExperience() {
@@ -68,6 +91,7 @@ class VideoApp {
   playIntroSequence() {
     this.canInteract = false;
     this.shouldPlayMusic = false;
+    this.hideCue();
     this.stopBirthdayMusic();
     animationController.hideInvitationCard();
 
@@ -108,7 +132,7 @@ class VideoApp {
 
     if (childNameEl) childNameEl.textContent = PARTY_CONFIG.childName;
     if (ageEl) ageEl.textContent = `¡Cumple ${PARTY_CONFIG.age} Añito!`;
-    if (taglineEl) taglineEl.textContent = PARTY_CONFIG.tagline;
+    if (taglineEl) taglineEl.innerHTML = PARTY_CONFIG.tagline;
     if (dateEl) dateEl.textContent = PARTY_CONFIG.date;
     if (timeEl) timeEl.textContent = PARTY_CONFIG.time;
     if (locEl) locEl.textContent = `${PARTY_CONFIG.location.name} - ${PARTY_CONFIG.location.address}`;
@@ -193,7 +217,10 @@ class VideoApp {
           this.playSceneVideo(PARTY_CONFIG.videoAssets.openDoor, {
             loop: false,
             onEnded: () => {
-              this.fsm.transitionTo(STATES.ROOM_SLEEPING);
+              // Disparar luz mágica amarilla resplandeciente antes de entrar a la habitación
+              this.triggerMagicLightFlash(() => {
+                this.fsm.transitionTo(STATES.ROOM_SLEEPING);
+              });
             }
           });
           break;
@@ -217,6 +244,17 @@ class VideoApp {
           this.playSceneVideo(PARTY_CONFIG.videoAssets.babyParty, {
             loop: false,
             onEnded: () => {
+              this.fsm.transitionTo(STATES.CAKE_CANDLE);
+            }
+          });
+          break;
+
+        case STATES.CAKE_CANDLE:
+          this.canInteract = false;
+          this.hideCue();
+          this.playSceneVideo(PARTY_CONFIG.videoAssets.babyCakeCandle, {
+            loop: false,
+            onEnded: () => {
               this.fsm.transitionTo(STATES.INVITATION_CARD);
             }
           });
@@ -234,7 +272,7 @@ class VideoApp {
     });
   }
 
-  /* Seamless Double-Buffered Video Switcher */
+  /* Seamless Double-Buffered Direct Video Crossfade (Sin transiciones oscuras) */
   playSceneVideo(videoSrc, { loop = false, onEnded = null, cueText = null, cueIcon = "👆" } = {}) {
     const nextVideo = this.idleVideo;
     const currentVideo = this.activeVideo;
@@ -246,7 +284,7 @@ class VideoApp {
     nextVideo.src = videoSrc;
     nextVideo.loop = loop;
 
-    // Mantener video desmuteado si el video contiene audio
+    // Mantener video desmuteado
     nextVideo.muted = !this.hasUserInteracted || this.isMuted;
     nextVideo.volume = 1.0;
     nextVideo.currentTime = 0;
@@ -262,13 +300,14 @@ class VideoApp {
     if (playPromise !== undefined) {
       playPromise
         .then(() => {
+          // Crossfade directo: nextVideo pasa al frente y el anterior se apaga suavemente encima
           nextVideo.classList.add('active');
           currentVideo.classList.remove('active');
 
           setTimeout(() => {
             currentVideo.pause();
             currentVideo.currentTime = 0;
-          }, 300);
+          }, 350);
 
           this.activeVideo = nextVideo;
           this.idleVideo = currentVideo;
@@ -282,7 +321,7 @@ class VideoApp {
           }
         })
         .catch(err => {
-          console.warn('[Video] Play error:', err);
+          console.warn('[Video] Play error, retrying inline:', err);
           nextVideo.muted = true;
           nextVideo.play().then(() => {
             nextVideo.classList.add('active');

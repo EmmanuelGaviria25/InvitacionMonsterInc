@@ -248,14 +248,14 @@ html, body {
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: #000000;
+  background-color: #fff0f5;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 
-/* Seamless Double-Buffered HTML5 Video Players */
+/* Seamless Double-Buffered HTML5 Video Players (Crossfade Inmediato) */
 .video-layer {
   position: absolute;
   top: 0;
@@ -264,15 +264,39 @@ html, body {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.45s ease-in-out;
+  z-index: 10;
+  transition: opacity 0.35s ease-out;
   pointer-events: none;
 }
 
 .video-layer.active {
   opacity: 1;
-  visibility: visible;
+  z-index: 20;
   pointer-events: none;
+}
+
+/* Magical Yellow Light Flash Overlay (Luz mágica dorada/amarilla al abrir la puerta) */
+.magic-light-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 45;
+  background: radial-gradient(circle at 50% 50%, #fffbeb 0%, #fef08a 40%, #facc15 80%, #eab308 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  mix-blend-mode: screen;
+}
+
+.magic-light-flash.active {
+  opacity: 1;
+}
+
+.magic-light-flash.fade-slow {
+  transition: opacity 1.4s ease-out;
+  opacity: 0;
 }
 
 /* Touch Overlay for Click / Tap Trigger */

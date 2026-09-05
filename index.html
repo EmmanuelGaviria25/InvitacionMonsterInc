@@ -70,11 +70,14 @@
       <!-- Video Layer B -->
       <video id="video-layer-b" class="video-layer" playsinline preload="auto"></video>
 
+      <!-- Magical Yellow Light Flash Overlay (Door Opening to Bedroom) -->
+      <div id="magic-light-flash" class="magic-light-flash"></div>
+
       <!-- Transparent Touch Trigger Overlay for Taps -->
       <div id="touch-trigger" class="touch-trigger-overlay"></div>
 
-      <!-- Call to Action Indicator -->
-      <div id="interaction-cue" class="interaction-cue pulse-glow">
+      <!-- Call to Action Indicator (Oculto por defecto, se activa solo en la escena de espera interactiva) -->
+      <div id="interaction-cue" class="interaction-cue pulse-glow hidden">
         <div class="cue-bubble">
           <span class="cue-icon">👆</span>
           <span class="cue-text">Toca la puerta para entrar</span>
@@ -92,17 +95,19 @@
     <section id="scene-invitation" class="invitation-overlay hidden">
       <article class="invitation-card">
 
-        <!-- Header Badge -->
+        <!-- Header Badge & Avatar -->
         <div class="card-decor-header">
-          <div class="monster-m-badge">M</div>
+          <div class="card-avatar-wrap">
+            <img src="assets/bienvenida_cumple_analu.jpg" alt="Ana Lucía" class="card-avatar-img">
+          </div>
           <span class="screamer-badge">¡Invitación Oficial!</span>
         </div>
 
         <!-- Title and Child Info -->
         <div class="invitation-title-wrap">
           <h1 id="inv-child-name" class="invitation-child-name">Ana Lucía</h1>
-          <div id="inv-age-tag" class="invitation-age-tag">¡Cumple 1 Añito!</div>
-          <p id="inv-tagline" class="invitation-tagline">¡Nuestra pequeña monstruito cumple su primer año!</p>
+          <div id="inv-age-tag" class="invitation-age-tag">🎉 ¡Mi Primer Añito! 🎂</div>
+          <p id="inv-tagline" class="invitation-tagline">¡Acompáñanos a festejar este día tan especial en Monstropolis!</p>
         </div>
 
         <!-- Party Details Box -->

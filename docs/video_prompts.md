@@ -69,12 +69,26 @@ Guía completa para generar los clips de video mediante herramientas de IA (Klin
 
 ---
 
-## 🎬 6. Escena 5: ¡Despertar Alegre, Sulley y Sorpresa de Cumpleaños!
-- **Archivo sugerido:** `assets/videos/clip5_despertar_sorpresa.mp4`
-- **Tipo:** Clímax y revelación de invitación
+## 🎬 6. Escena 5: ¡Celebración Alegre de Cumpleaños!
+- **Archivo sugerido:** `assets/videos/clip5_festejo_cumple.mp4`
+- **Tipo:** Celebración
 - **Duración:** 3 a 4 segundos
 - **Prompt:**
 ```text
-3D Pixar style heartwarming animation. The cute 1-year-old baby girl with Boo pigtails wakes up smiling brightly and giggling with big joyful eyes, sitting up in her crib. Friendly Sulley the big turquoise fluffy monster appears wearing a cute pink party hat, raising his hands in joyful celebration holding a little birthday present. Colorful confetti (turquoise, purple, green, and pink) bursts into the air around them. Joyful party atmosphere, ultra-detailed 3D render, vertical 9:16 aspect ratio.
+3D Pixar style heartwarming animation. The cute 1-year-old baby girl with Boo pigtails is giggling happily and clapping her hands in joy inside her bedroom surrounded by party sparkles and balloons. Fluffy turquoise monster paws (Sulley) gently clap along in excitement at the sides of the frame. Joyful festive atmosphere, ultra-detailed 3D render, vertical 9:16 aspect ratio.
 ```
-- **Terminación del Clip:** La bebé sonríe, Sulley festeja, cae el confeti y se despliega la tarjeta final de invitación.
+
+---
+
+## 🎂 7. Escena 5.5: ¡El Pastel de 1 Año y el Deseo de Cumpleaños! (Momento Clímax)
+- **Archivo sugerido:** `assets/videos/clip5_5_pastel_vela.mp4`
+- **Tipo:** Momento cumbre antes de la tarjeta final
+- **Duración:** 3 a 4 segundos
+- **Prompt:**
+```text
+3D Pixar cinematic animation, first-person POV (Sulley's perspective). Fluffy turquoise and purple spotted monster hands gently bring forward a cute pastel pink 1st birthday cake with creamy frosting and a glowing golden number "1" candle flickering with magical sparkles. The adorable 1-year-old baby girl with brown Boo pigtails looks at the lit candle in sheer wonder with wide sparkling eyes and a big joyful smile. She takes a sweet little breath and happily blows out the candle. As the candle goes out, a magical burst of golden fairy dust, glowing stars, and colorful confetti fills the entire room. Cinematic studio lighting, heartwarming Disney Pixar aesthetic, vertical 9:16 aspect ratio.
+```
+- **Terminación del Clip:** La bebé sonríe emocionada junta sus manitas mientras cae el confeti festivo sobre el pastel.
+
+---
+- **Comportamiento en la Web:** Al finalizar este movimiento, el video se difumina suavemente o permanece en un loop apacible de fondo mientras la **Tarjeta de Invitación Oficial (Glassmorphism con botones de WhatsApp, Google Maps y Calendario)** entra flotando con animación GSAP y lluvia de confeti.

@@ -5,7 +5,7 @@
 export const PARTY_CONFIG = {
   childName: "Ana Lucía",
   age: 1,
-  tagline: "¡Nuestra pequeña monstruito cumple su primer año!",
+  tagline: "¡Nuestra pequeña monstruito<br>cumple su primer año!",
   date: "Sábado 15 de Noviembre de 2026",
   time: "4:00 PM",
   location: {
@@ -39,7 +39,8 @@ export const PARTY_CONFIG = {
     walkToDoor: "assets/Monster_walking_towards_door_1080p_202609041602.mp4",
     openDoor: "assets/Monster_hand_opening_bedroom_door_202609041602.mp4",
     babySleeping: "assets/Baby_sleeping_in_crib_1080p_202609041603.mp4",
-    babyParty: "assets/baby_celebrating_birthday.mp4"
+    babyParty: "assets/baby_celebrating_birthday.mp4",
+    babyCakeCandle: "assets/clip5_5_pastel_vela.mp4"
   },
   audioAssets: {
     birthdayMusic: "assets/un-alegre-vals-de-ukelele.mp3"
