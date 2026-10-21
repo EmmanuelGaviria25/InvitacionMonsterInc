@@ -11,7 +11,7 @@ export const PARTY_CONFIG = {
   location: {
     name: "Piscinas del Estadio",
     address: "Zona verde y parque",
-    googleMapsUrl: "https://maps.app.goo.gl/PPZ5xTN5VLRjeU1NA"
+    googleMapsUrl: "https://maps.app.goo.gl/sSAnjLtDe8mJJ3FHA"
   },
   rsvp: {
     whatsappNumber: "573127368551",
