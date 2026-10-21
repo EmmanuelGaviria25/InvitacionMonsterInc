@@ -135,13 +135,20 @@ class VideoApp {
     if (taglineEl) taglineEl.innerHTML = PARTY_CONFIG.tagline;
     if (dateEl) dateEl.textContent = PARTY_CONFIG.date;
     if (timeEl) timeEl.textContent = PARTY_CONFIG.time;
-    if (locEl) locEl.textContent = `${PARTY_CONFIG.location.name} - ${PARTY_CONFIG.location.address}`;
+    if (locEl) {
+      if (PARTY_CONFIG.location.address) {
+        locEl.innerHTML = `${PARTY_CONFIG.location.name}<span class="info-address">${PARTY_CONFIG.location.address}</span>`;
+      } else {
+        locEl.textContent = PARTY_CONFIG.location.name;
+      }
+    }
 
     // WhatsApp Link
     const btnWhatsApp = document.getElementById('btn-whatsapp');
     if (btnWhatsApp) {
+      const cleanPhone = String(PARTY_CONFIG.rsvp.whatsappNumber).replace(/\D/g, '');
       const encodedMsg = encodeURIComponent(PARTY_CONFIG.rsvp.messageTemplate);
-      btnWhatsApp.href = `https://wa.me/${PARTY_CONFIG.rsvp.whatsappNumber}?text=${encodedMsg}`;
+      btnWhatsApp.href = `https://api.whatsapp.com/send/?phone=${cleanPhone}&text=${encodedMsg}`;
     }
 
     // Google Maps Link

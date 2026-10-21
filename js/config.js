@@ -7,21 +7,21 @@ export const PARTY_CONFIG = {
   age: 1,
   tagline: "¡Nuestra pequeña monstruito<br>cumple su primer año!",
   date: "Sábado 15 de Noviembre de 2026",
-  time: "4:00 PM",
+  time: "3:00 PM",
   location: {
-    name: "Salón Mágico Monstropolis",
-    address: "Av. Principal #123, Ciudad",
-    googleMapsUrl: "https://maps.google.com/?q=Monstropolis"
+    name: "Piscinas del Estadio",
+    address: "Zona verde y parque",
+    googleMapsUrl: "https://maps.app.goo.gl/PPZ5xTN5VLRjeU1NA"
   },
   rsvp: {
-    whatsappNumber: "521234567890",
+    whatsappNumber: "573127368551",
     messageTemplate: "¡Hola! Confirmo mi asistencia al cumpleaños de 1 año de Ana Lucía 🎉👶🎂"
   },
   calendar: {
     title: "Cumpleaños 1 Año Ana Lucía - Monsters Inc",
     description: "¡Acompáñanos a festejar el primer añito de Ana Lucía en Monstropolis!",
-    startDate: "20261115T160000",
-    endDate: "20261115T200000"
+    startDate: "20261115T150000",
+    endDate: "20261115T190000"
   },
   themeColors: {
     sulleyCyan: "#00c4cc",
