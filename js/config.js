@@ -6,7 +6,7 @@ export const PARTY_CONFIG = {
   childName: "Ana Lucía",
   age: 1,
   tagline: "¡Nuestra pequeña monstruito<br>cumple su primer año!",
-  date: "Sábado 15 de Noviembre de 2026",
+  date: "Domingo 15 de Noviembre de 2026",
   time: "3:00 PM",
   location: {
     name: "Piscinas del Estadio",
